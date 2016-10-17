@@ -14,15 +14,21 @@ using namespace std;
  */
 //constante 
 const unsigned int SCORE_AU_DEBUT = 501;
-
+const unsigned int FLECHETTE_MAX = 3;
 
 //Variable Globale
 unsigned int score_actuel = SCORE_AU_DEBUT;
+
 int main() 
 {
 
-    
-    cout<< "Score: " << score_actuel <<"  - Jouez la flechette " << << endl;
+    unsigned int nombre_de_flechette_actuel = 1;
+    do
+    {
+    cout<< "Score: " << score_actuel <<"  - Jouez la flechette "
+            << nombre_de_flechette_actuel << "/" << FLECHETTE_MAX <<endl;
+    nombre_de_flechette_actuel++;
+    }while(nombre_de_flechette_actuel <= FLECHETTE_MAX);
 
     string str; // une chaine de caractères
 
