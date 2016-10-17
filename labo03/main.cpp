@@ -12,17 +12,29 @@ using namespace std;
 /*
  * 
  */
-int main(int argc, char** argv) {
+//constante 
+const unsigned int SCORE_AU_DEBUT = 501;
 
+
+//Variable Globale
+unsigned int score_actuel = SCORE_AU_DEBUT;
+int main() 
+{
+
+    
+    cout<< "Score: " << score_actuel <<"  - Jouez la flechette " << << endl;
 
     string str; // une chaine de caractères
 
-    if (cin >> str) {
+    if (cin >> str) 
+        {
         // atteint si la chaine a pu etre lue
     }
 
-    if (str.empty()) {
+    if (str.empty()) 
+    {
         // atteint si la chaine est vide
+        
     }
 
     stringstream ss(str); // flux qui lit depuis la chaine str
