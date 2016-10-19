@@ -2,14 +2,14 @@
  -----------------------------------------------------------------------------------
  Laboratoire : Laboratoire 3 - Convertisseur avec les entiers
  Fichier     : main.cpp
- Auteur(s)   : Sébastien Saez et Adam Zouari
- Date        : 10 octobre 2016
+ Auteur(s)   : Sébastien Saez et Ayem Lagha
+ Date        : 17 octobre 2016
 
  But         : Le but de ce laboratoire est de mettre en oeuvre un programme 
- *             permettant d'afficher des nombres entiers dans la base 
- *             de notre choix (entre 2 et 36)
+ *             qui compte les points pour un joueur au 501 double out, une 
+ *             variante des fléchettes.
 
- Remarque(s) : Cette version fonctionne uniquement avec des entiers
+ Remarque(s) : 
 
  Compilateur : g++ (GCC) 6.2.1 
  -----------------------------------------------------------------------------------
@@ -28,6 +28,7 @@ unsigned int score_actuel = SCORE_AU_DEBUT;
 int main()
 {
    unsigned int nombre_de_flechette_actuel = 1;
+   unsigned int coefficient = 1;
 
 
    do {
@@ -38,12 +39,23 @@ int main()
       
       if (cin >> str) 
       {
+         string lol = str;
          // atteint si la chaine a pu etre lue
          cout << "ICI c'est le traitement de la chaine" << endl;
-         if(str[0] == '$')
+         if(str[0] == 'd' || str[0] == 'D')
          {
-            cout << "Je t'ai reconnu frère" << endl;
-         }  
+            coefficient = 2;
+            char toto = str[1] + str[2];
+            cout << (int)toto << endl;
+            cout << "je vois ton D" << endl;
+         }
+         if(str[0] == 't' || str[0] == 'T')
+         {
+            coefficient = 3;
+            lol =  str[2];
+            cout << stoi(lol) << endl;
+            cout << "je vois ton T" << endl;
+         }
       }
 
       if (str.empty()) 
@@ -85,7 +97,7 @@ int main()
             case 18: 
             case 19: 
             case 20: 
-               score_actuel = score_actuel - val;
+               score_actuel = score_actuel - (val * coefficient);
                if(nombre_de_flechette_actuel >= 3)
                {
                   nombre_de_flechette_actuel = 1;
