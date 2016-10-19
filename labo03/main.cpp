@@ -86,7 +86,6 @@ int main()
                {
                   nombre_de_flechette_actuel++;
                }
-               break;               
          }
          else
          {
