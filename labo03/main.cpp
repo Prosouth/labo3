@@ -75,29 +75,9 @@ int main()
          // code atteint si l'entier val a pu etre lu depuis
          // le flux ss.
          // ICI c'est seulement les valeurs simples
-         switch(val)
+         if(val >= 1 && val <= 20)
          {
-            case 1: 
-            case 2: 
-            case 3: 
-            case 4: 
-            case 5: 
-            case 6: 
-            case 7: 
-            case 8: 
-            case 9: 
-            case 10: 
-            case 11: 
-            case 12: 
-            case 13: 
-            case 14: 
-            case 15: 
-            case 16: 
-            case 17: 
-            case 18: 
-            case 19: 
-            case 20: 
-               score_actuel = score_actuel - (val * coefficient);
+               score_actuel = score_actuel - val;
                if(nombre_de_flechette_actuel >= 3)
                {
                   nombre_de_flechette_actuel = 1;
@@ -107,8 +87,10 @@ int main()
                   nombre_de_flechette_actuel++;
                }
                break;               
-            default:
-               cout << "Ta valeur n'a pas été trouvée" << endl;
+         }
+         else
+         {
+            cout << "La valeur n'a pas été trouvée" << endl;
          }
       }     
    } while (score_actuel != 0);
