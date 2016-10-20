@@ -9,7 +9,8 @@
  *             qui compte les points pour un joueur au 501 double out, une 
  *             variante des fléchettes.
 
- Remarque(s) : 
+ Remarque(s) : Si l'utilisateur rentre des chiffres à virgule, on ne prend
+ *             que la partie entière.
 
  Compilateur : g++ (GCC) 6.2.1 
  -----------------------------------------------------------------------------------
@@ -24,42 +25,43 @@ const unsigned int SCORE_AU_DEBUT = 501, FLECHETTES_MAX = 3;
 
 // variables globales
 unsigned int score_actuel = SCORE_AU_DEBUT;
+int nombre_flechettes_total = 0;
 
 int main()
 {
    unsigned int nombre_de_flechette_actuel = 1;
    unsigned int coefficient = 1;
-
-
+   
    do {
       string str; // une chaine de caractères
 
       cout << "Score: " << score_actuel << "  - Jouez la flechette "
-           << nombre_de_flechette_actuel << "/" << FLECHETTES_MAX << endl;
-      
+              << nombre_de_flechette_actuel << "/" << FLECHETTES_MAX << endl;
+
       if (cin >> str) 
       {
-         string lol = str;
          // atteint si la chaine a pu etre lue
          cout << "ICI c'est le traitement de la chaine" << endl;
-         if(str[0] == 'd' || str[0] == 'D')
-         {
-            coefficient = 2;
-            char toto = str[1] + str[2];
-            cout << (int)toto << endl;
-            cout << "je vois ton D" << endl;
-         }
-         if(str[0] == 't' || str[0] == 'T')
-         {
-            coefficient = 3;
-            lol =  str[2];
-            cout << stoi(lol) << endl;
-            cout << "je vois ton T" << endl;
+         switch (tolower(str[0])) {
+            case 't':
+               cout << "triple" << endl;
+               coefficient = 3;
+               score_actuel = score_actuel - coefficient;
+               break;
+
+            case 'd':
+               cout << "double" << endl;
+               coefficient = 2;
+               
+               break;
+
+            default:
+               cout << "wtf?" << endl;
+               break;
          }
       }
 
-      if (str.empty()) 
-      {
+      if (str.empty()) {
          // atteint si la chaine est vide
          cout << "Si la chaine est vide?";
 
@@ -70,30 +72,24 @@ int main()
 
       int val; // un entier
 
-      if (ss >> val) 
-      {
+      if (ss >> val) {
          // code atteint si l'entier val a pu etre lu depuis
          // le flux ss.
          // ICI c'est seulement les valeurs simples
-         if(val >= 1 && val <= 20)
-         {
-               score_actuel = score_actuel - val;
-               if(nombre_de_flechette_actuel >= 3)
-               {
-                  nombre_de_flechette_actuel = 1;
-               }
-               else
-               {
-                  nombre_de_flechette_actuel++;
-               }
-         }
-         else
-         {
+         if (val >= 1 && val <= 20) {
+            score_actuel = score_actuel - val;
+            (nombre_de_flechette_actuel >= 3) ? nombre_de_flechette_actuel = 1 :
+                    nombre_de_flechette_actuel++;
+            nombre_flechettes_total++;
+
+         } else {
             cout << "La valeur n'a pas été trouvée" << endl;
          }
-      }     
+      }
    } while (score_actuel != 0);
 
 
    return EXIT_SUCCESS;
 }
+
+
