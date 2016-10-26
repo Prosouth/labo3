@@ -2,7 +2,7 @@
  -----------------------------------------------------------------------------------
  Laboratoire : Laboratoire 3 - Convertisseur avec les entiers
  Fichier     : main.cpp
- Auteur(s)   : Sébastien Saez et Ayem Lagha
+ Auteur(s)   : Sébastien Saez et Aymen Lagha
  Date        : 17 octobre 2016
 
  But         : Le but de ce laboratoire est de mettre en oeuvre un programme
