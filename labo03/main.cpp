@@ -36,20 +36,19 @@ int main() {
     {
         string str; // une chaine de caractères
 
-        cout << "Score: " << score_actuel;
-        cout << "  - Jouez la flechette " << nombre_de_flechette_actuel;
-        cout << "/" << FLECHETTES_MAX << endl;
+        cout << "Score: " << score_actuel << "  - Jouez la flechette " 
+             << nombre_de_flechette_actuel << "/" << FLECHETTES_MAX << endl;
 
 
         if (cin >> str)
         {
             // atteint si la chaine a pu etre lue
             //recuperation de l'indication s'il est double ou triple
-            char indice_de_coifficient = tolower(str[0]);
+            char indice_de_coefficient = tolower(str[0]);
             //convertion en code ascii
-            int val_premier_cractere = indice_de_coifficient;
+            int val_premier_caractere = indice_de_coefficient;
 
-            if (val_premier_cractere == 100 || val_premier_cractere == 116)
+            if (val_premier_caractere == 100 || val_premier_caractere == 116)
             {
                 //on ecrase la premier caractere par le caractere zero pour puis
                 //convertir apres avec la "stringstream"
@@ -63,7 +62,7 @@ int main() {
                 reste_de_chaine += str[2];
 
 
-                if (indice_de_coifficient == 't' && !(reste_de_chaine == "25"))
+                if (indice_de_coefficient == 't' && !(reste_de_chaine == "25"))
                 {
 
                     coefficient = 3;
@@ -72,7 +71,7 @@ int main() {
                 else
                 {
 
-                    if (indice_de_coifficient == 'd')
+                    if (indice_de_coefficient == 'd')
                     {
 
                         coefficient = 2;
@@ -92,7 +91,7 @@ int main() {
         {
             // atteint si la chaine est vide
             //cout << "Entree non valide" << endl;
-            break;
+            
         }
 
         stringstream ss(str); // flux qui lit depuis la chaine str
@@ -120,7 +119,6 @@ int main() {
                 {
                     score_dun_coup = coefficient * val;
                     nombre_de_flechette_actuel++;
-
                 }
                 else
                 {
@@ -131,15 +129,13 @@ int main() {
             }
 
 
-            coefficient = 1; //remettre les coefficient a valeur initialle
+            coefficient = 1; //remettre les coefficient à la valeur initiale
 
             int resultat_soustraction = score_actuel - score_dun_coup;
             if (resultat_soustraction == 0 || resultat_soustraction > 1)
             {
                 score_de_volee_courant += score_dun_coup;
                 score_actuel -= score_dun_coup;
-
-
             }
             else
             {
@@ -149,18 +145,12 @@ int main() {
                     score_actuel += score_de_volee_courant;
                     score_de_volee_courant = 0;
                 }
-
-
                 nombre_de_flechette_actuel = 1;
                 cout << "Bust" << endl;
             }
-
-
             if (nombre_de_flechette_actuel > 3)
             {
-
                 nombre_de_flechette_actuel = 1;
-
                 score_de_volee_courant = 0;
             }
 
@@ -168,7 +158,6 @@ int main() {
         nombre_flechettes_total++;
     }
     while (score_actuel != 0);
-
     cout << "Score: " << score_actuel << " en " << nombre_flechettes_total;
     cout << " flechettes" << endl;
     cout << "Bravo!" << endl;
