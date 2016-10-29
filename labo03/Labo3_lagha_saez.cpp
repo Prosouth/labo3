@@ -20,7 +20,7 @@
 #include <sstream>
 using namespace std;
 
-// constantes
+// constantes du jeu
 const unsigned int SCORE_AU_DEBUT = 501, FLECHETTES_MAX = 3;
 
 // variables globales
@@ -38,7 +38,6 @@ int main() {
 
         cout << "Score: " << score_actuel << "  - Jouez la flechette " 
              << nombre_de_flechette_actuel << "/" << FLECHETTES_MAX << endl;
-
 
         if (cin >> str)
         {
