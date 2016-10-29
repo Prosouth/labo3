@@ -50,26 +50,23 @@ int main() {
 
             if (val_premier_caractere == 100 || val_premier_caractere == 116)
             {
-                //on ecrase la premier caractere par le caractere zero pour puis
-                //convertir apres avec la "stringstream"
+                // on ecrase la premier caractère par le caractère zéro afin
+                // de le convertir par la suite avec "stringstream"
                 str[0] = '0';
 
 
-                //recupere le reste de la chaine pour 
-                //elimine la valeur 25 de triple
+                // récupère le reste de la chaîne
                 string reste_de_chaine = "";
                 reste_de_chaine += str[1];
                 reste_de_chaine += str[2];
 
-
+                // on applique le coefficient et on élimine la valeur t25 
                 if (indice_de_coefficient == 't' && !(reste_de_chaine == "25"))
                 {
                     coefficient = 3;
-                    //score_actuel = score_actuel - coefficient;
                 }
                 else
                 {
-
                     if (indice_de_coefficient == 'd')
                     {
                         coefficient = 2;
@@ -86,33 +83,32 @@ int main() {
         {
             // atteint si la chaine est vide
            cout << "Entree non valide" << endl;
-            
         }
 
         stringstream ss(str); // flux qui lit depuis la chaine str
         // exactement comme cin lit depuis la console
 
-        int val; // un entier
+        int valeur_tir;
 
 
-        if (ss >> val)
+        if (ss >> valeur_tir)
         {
-            // code atteint si l'entier val a pu etre lu depuis
+            // code atteint si l'entier valeur_tir a pu etre lu depuis
             // le flux ss.
             // les valeurs simples sont traitées ici
             unsigned int score_dun_coup = 0;
 
-            if (val >= 0 && val <= 20)
+            if (valeur_tir >= 0 && valeur_tir <= 20)
             {
-                score_dun_coup = coefficient * val;
+                score_dun_coup = coefficient * valeur_tir;
 
                 nombre_de_flechette_actuel++;
             }
             else
             {
-                if ((val == 25) || (val == 25 && coefficient == 2))
+                if ((valeur_tir == 25) || (valeur_tir == 25 && coefficient == 2))
                 {
-                    score_dun_coup = coefficient * val;
+                    score_dun_coup = coefficient * valeur_tir;
                     nombre_de_flechette_actuel++;
                 }
                 else
