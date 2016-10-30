@@ -35,7 +35,8 @@ int main()
    int score_actuel = SCORE_AU_DEBUT,
        nombre_flechettes_total = 0;
    unsigned int nombre_de_flechette_actuel = 1,
-                coefficient = 1;
+                coefficient = 1,
+                score_de_volee_courante = 0;
    do 
    {
       string str; // une chaine de caractères
@@ -108,19 +109,24 @@ int main()
 
          if ((resultat_actuel == 0 && coefficient == 2) || resultat_actuel > 1) 
          {
+            score_de_volee_courante += score_dun_coup;
             score_actuel -= score_dun_coup;
          } 
          else 
          {
             if (score_dun_coup > score_actuel || resultat_actuel < 2) 
             {
-               nombre_de_flechette_actuel--;
+               score_actuel += score_de_volee_courante;
+               score_de_volee_courante = 0;
             }
+            nombre_de_flechette_actuel = 1;
             cout << "Bust" << endl;
+            
          }
          if (nombre_de_flechette_actuel > 3) 
          {
             nombre_de_flechette_actuel = 1;
+            score_de_volee_courante = 0;
          }
       }
       coefficient = 1; // on remet les coeff. à la valeur initiale après le traitement
