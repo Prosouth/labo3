@@ -10,10 +10,8 @@
  *             variante des fléchettes.
  
  Remarque(s) : Si l'utilisateur rentre des chiffres à virgule, on ne prend
- *             que la partie entière. On voulait implémenter un message d'erreur 
- *             si on rentre "z30" par exemple mais la manière dont codecheck fait
- *             les tests nous aurait fait échouer nos tests. Du coup, si on rentre
- *             z30, on a aucun retour à l'utilisateur et rien ne change.
+ *             que la partie entière. Un message d'erreur apparait si on rentre : 2dd,
+ *             2d2, z30.
  
  Compilateur : g++ (GCC) 6.2.1
  -----------------------------------------------------------------------------------
@@ -36,7 +34,7 @@ int main()
 {
    // variables globales
    int score_actuel = SCORE_AU_DEBUT,
-       nombre_flechettes_total = 0;
+       nombre_flechettes_total = 0; 
    unsigned int nombre_de_flechette_actuel = 1,
                 coefficient = 1,
                 score_de_volee_courante = 0;
@@ -91,16 +89,14 @@ int main()
       stringstream ss(str); // flux qui lit depuis la chaîne str
 
       int valeur_tir; // variable utilisée pour recevoir la valeur du tir
-
-      //si l'entier valeur_tir a pu être lu depuis le flux ss
-      if (ss >> valeur_tir) 
+      ss >> valeur_tir;
+      
+      string reste_chaine; // variable pour le reste après le ss
+      ss >> reste_chaine; 
+      
+      // si la chaine est vide, le traitement peut se dérouler
+      if(reste_chaine.empty())
       {
-         string reste_chaine;
-         ss >> reste_chaine;
-         if (!reste_chaine.empty()) 
-         {
-            cout << "Entree non valide" << endl;
-         }
          unsigned int score_dun_coup = 0;
 
          // Traitement des valeurs simples uniquement
@@ -139,6 +135,10 @@ int main()
             nombre_de_flechette_actuel = 1;
             score_de_volee_courante = 0;
          }
+      }
+      else // autrement, c'est invalide!
+      {
+         cout << "Entree non valide" << endl;
       }
       coefficient = 1; // on remet les coeff. à la valeur initiale après le traitement
    } 
