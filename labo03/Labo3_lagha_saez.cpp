@@ -93,7 +93,14 @@ int main()
       int valeur_tir; // variable utilisée pour recevoir la valeur du tir
 
       //si l'entier valeur_tir a pu être lu depuis le flux ss
-      if (ss >> valeur_tir) {
+      if (ss >> valeur_tir) 
+      {
+         string reste_chaine;
+         ss >> reste_chaine;
+         if (!reste_chaine.empty()) 
+         {
+            cout << "Entree non valide" << endl;
+         }
          unsigned int score_dun_coup = 0;
 
          // Traitement des valeurs simples uniquement
