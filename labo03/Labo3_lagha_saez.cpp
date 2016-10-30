@@ -21,7 +21,8 @@
 using namespace std;
 
 // constantes du jeu
-const unsigned int SCORE_AU_DEBUT = 501, FLECHETTES_MAX = 3;
+const unsigned int SCORE_AU_DEBUT = 501, FLECHETTES_MAX = 3, LETTRE_D_MAJ = 68,
+                   LETTRE_D_MIN = 100, LETTRE_T_MAJ = 84, LETTRE_T_MIN = 116;
 
 int main() {
    // variables globales
@@ -42,14 +43,14 @@ int main() {
         if (cin >> str)
         {               
             //conversion en code ASCII          
-            int codeascii = str[0];
-            if(codeascii== 68 || codeascii == 84 ){
+            short codeascii = str[0];
+            if(codeascii == LETTRE_D_MAJ || codeascii == LETTRE_T_MAJ ){
                 codeascii +=32;// conversion entre majuscule et minuscule
             }
            
-            if (codeascii == 100 || codeascii == 116 )
+            if (codeascii == LETTRE_D_MIN || codeascii == LETTRE_T_MIN )
             {
-                // on ecrase la premier caractère par le caractère zéro afin
+                // on écrase le premier caractère par le caractère zéro afin
                 // de le convertir par la suite avec "stringstream"
                 str[0] = '0';
 
@@ -57,13 +58,13 @@ int main() {
                 reste_de_chaine += str[1];
                 reste_de_chaine += str[2];
 
-                if (codeascii == 116 && !(reste_de_chaine == "25"))
+                if (codeascii == LETTRE_T_MIN && !(reste_de_chaine == "25"))
                 {
                     coefficient = 3;                    
                 }
                 else
                 {
-                    if (codeascii == 100)
+                    if (codeascii == LETTRE_D_MIN)
                     {                       
                         coefficient = 2;
                     }
@@ -91,7 +92,8 @@ int main() {
             unsigned int score_dun_coup = 0;
             
             // Traitement des valeurs simples uniquement
-            if ((valeur_tir >= 0 && valeur_tir <= 20)||(valeur_tir == 25)||(valeur_tir == 25 && coefficient == 2))
+            if ((valeur_tir >= 0 && valeur_tir <= 20)||(valeur_tir == 25)||
+                (valeur_tir == 25 && coefficient == 2))
             {              
                 score_dun_coup = coefficient * valeur_tir;
                 nombre_de_flechette_actuel++;
@@ -128,8 +130,10 @@ int main() {
         nombre_flechettes_total++;
     }
     while (score_actuel != 0);
+    
     cout << "Score: " << score_actuel << " en " << nombre_flechettes_total;
     cout << " flechettes" << endl;
     cout << "Bravo!" << endl;
+    
     return EXIT_SUCCESS;
 }
