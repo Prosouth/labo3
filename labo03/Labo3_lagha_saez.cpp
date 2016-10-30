@@ -113,15 +113,13 @@ int main()
             score_actuel -= score_dun_coup;
          } 
          else 
-         {
-            if (score_dun_coup > score_actuel || resultat_actuel < 2) 
-            {
-               score_actuel += score_de_volee_courante;
-               score_de_volee_courante = 0;
-            }
+         {      
+            score_actuel += score_de_volee_courante;
+            score_de_volee_courante = 0;
             nombre_de_flechette_actuel = 1;
             cout << "Bust" << endl;
          }
+         
          if (nombre_de_flechette_actuel > 3) 
          {
             nombre_de_flechette_actuel = 1;
