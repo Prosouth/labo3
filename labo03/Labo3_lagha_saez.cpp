@@ -121,7 +121,6 @@ int main()
             }
             nombre_de_flechette_actuel = 1;
             cout << "Bust" << endl;
-            
          }
          if (nombre_de_flechette_actuel > 3) 
          {
