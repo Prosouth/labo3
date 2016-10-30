@@ -35,9 +35,7 @@ int main()
    int score_actuel = SCORE_AU_DEBUT,
        nombre_flechettes_total = 0;
    unsigned int nombre_de_flechette_actuel = 1,
-                coefficient = 1,
-                score_de_volee_courante = 0;
-
+                coefficient = 1;
    do 
    {
       string str; // une chaine de caractères
@@ -61,10 +59,6 @@ int main()
             // on écrase le premier caractère par le caractère zéro afin
             // de le convertir par la suite avec "stringstream"
             str[0] = '0';
-
-            string reste_de_chaine = "";
-            reste_de_chaine += str[1];
-            reste_de_chaine += str[2];
 
             if (codeascii == LETTRE_T_MIN) 
             {
@@ -110,18 +104,16 @@ int main()
             cout << "Entree non valide" << endl;
          }
 
-         int resultat_soustraction = score_actuel - score_dun_coup;
+         int resultat_actuel = score_actuel - score_dun_coup;
 
-         if ((resultat_soustraction == 0 && coefficient == 2) || resultat_soustraction > 1) 
+         if ((resultat_actuel == 0 && coefficient == 2) || resultat_actuel > 1) 
          {
-            score_de_volee_courante += score_dun_coup;
             score_actuel -= score_dun_coup;
          } 
          else 
          {
-            if (score_dun_coup > score_actuel || resultat_soustraction < 2) 
+            if (score_dun_coup > score_actuel || resultat_actuel < 2) 
             {
-               score_de_volee_courante = 0;
                nombre_de_flechette_actuel--;
             }
             cout << "Bust" << endl;
@@ -129,7 +121,6 @@ int main()
          if (nombre_de_flechette_actuel > 3) 
          {
             nombre_de_flechette_actuel = 1;
-            score_de_volee_courante = 0;
          }
       }
       coefficient = 1; // on remet les coeff. à la valeur initiale après le traitement
