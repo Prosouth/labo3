@@ -54,12 +54,12 @@ int main()
          // premier caractère de la string entrée          
          char premier_caractere = str[0];
          
-         // Si la première lettre correspond à D ou T
+         // si la première lettre correspond à D ou T, on la convertit
          if (premier_caractere == LETTRE_D_MAJ || premier_caractere == LETTRE_T_MAJ) 
          {
             premier_caractere += CONVERSION_MINUSCULE; // conversion entre majuscule et minuscule
          }
-
+		// si la première lettre correspond à d ou t
          if (premier_caractere == LETTRE_D_MIN || premier_caractere == LETTRE_T_MIN) 
          {
             // on écrase le premier caractère par le caractère zéro afin
