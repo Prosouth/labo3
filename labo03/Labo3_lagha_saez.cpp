@@ -60,18 +60,18 @@ int main()
             // on écrase le premier caractère par le caractère zéro afin
             // de le convertir par la suite avec "stringstream"
             str[0] = '0';
-
-            if (codeascii == LETTRE_T_MIN) 
+            
+            switch(codeascii)
             {
-               coefficient = 3;
-            } 
-            else if (codeascii == LETTRE_D_MIN) 
-            {
-               coefficient = 2;
-            } 
-            else 
-            {
-               str = "";
+               case LETTRE_T_MIN:
+                  coefficient = 3;
+                  break;
+               case LETTRE_D_MIN:
+                  coefficient = 2;
+                  break;
+               default:
+                  str = "";
+                  break;
             }
          }
       }
@@ -91,8 +91,8 @@ int main()
          unsigned int score_dun_coup = 0;
 
          // Traitement des valeurs simples uniquement
-         if ((valeur_tir >= 0 && valeur_tir <= 20) || (valeur_tir == 25 && 
-             (coefficient == 1 || coefficient == 2)) ||
+         if ((valeur_tir >= 0 && valeur_tir <= 20) || 
+             (valeur_tir == 25 && (coefficient == 1 || coefficient == 2)) ||
              (valeur_tir == 25 && coefficient == 2)) 
          {
             score_dun_coup = coefficient * valeur_tir;
