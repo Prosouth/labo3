@@ -57,7 +57,8 @@ int main()
          {
             premier_caractere += CONVERSION_MINUSCULE; // conversion entre majuscule et minuscule
          }
-		// si la première lettre correspond à d ou t
+         
+         // si la première lettre correspond à d ou t
          if (premier_caractere == LETTRE_D_MIN || premier_caractere == LETTRE_T_MIN) 
          {
             // on écrase le premier caractère par le caractère zéro afin
