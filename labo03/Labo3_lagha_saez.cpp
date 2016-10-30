@@ -23,8 +23,6 @@ using namespace std;
 // constantes du jeu
 const unsigned int SCORE_AU_DEBUT = 501, FLECHETTES_MAX = 3;
 
-
-
 int main() {
    // variables globales
    int score_actuel = SCORE_AU_DEBUT,
@@ -40,11 +38,9 @@ int main() {
         cout << "  - Jouez la flechette " << nombre_de_flechette_actuel;
         cout << "/" << FLECHETTES_MAX << endl;
 
+        // atteint si la chaîne a pu être lue            
         if (cin >> str)
-        {           
-            // atteint si la chaîne a pu être lue            
-            
-            
+        {               
             //conversion en code ASCII          
             int codeascii = str[0];
             if(codeascii== 68 || codeascii == 84 ){
@@ -85,28 +81,25 @@ int main() {
            cout << "Entree non valide" << endl;
         }
 
-        stringstream ss(str); // flux qui lit depuis la chaine str
-        // exactement comme cin lit depuis la console
+        stringstream ss(str); // flux qui lit depuis la chaîne str
 
-        int valeur_tir;
-
-
+        int valeur_tir; // variable utilisée pour recevoir la valeur du tir
+        
+        //si l'entier valeur_tir a pu être lu depuis le flux ss
         if (ss >> valeur_tir)
         {
-            // code atteint si l'entier valeur_tir a pu etre lu depuis
-            // le flux ss.
-            // les valeurs simples sont traitées ici
             unsigned int score_dun_coup = 0;
             
+            // Traitement des valeurs simples uniquement
             if ((valeur_tir >= 0 && valeur_tir <= 20)||(valeur_tir == 25)||(valeur_tir == 25 && coefficient == 2))
             {              
                 score_dun_coup = coefficient * valeur_tir;
                 nombre_de_flechette_actuel++;
             }
             else
-            {                
-                    nombre_flechettes_total--;
-                    cout << "Entree non valide" << endl;            
+            {
+               nombre_flechettes_total--;
+               cout << "Entree non valide" << endl;            
             }          
 
             int resultat_soustraction = score_actuel - score_dun_coup;
@@ -123,7 +116,6 @@ int main() {
                     score_de_volee_courante = 0;
                     nombre_de_flechette_actuel--;
                 }
-                //nombre_de_flechette_actuel = 1;
                 cout << "Bust" << endl;
             }
             if (nombre_de_flechette_actuel > 3)
@@ -132,7 +124,7 @@ int main() {
                 score_de_volee_courante = 0;
             }
         }
-         coefficient = 1; //remettre les coefficient a valeur initialle
+         coefficient = 1; // on remet les coeff. à la valeur initiale après le traitement
         nombre_flechettes_total++;
     }
     while (score_actuel != 0);
