@@ -23,11 +23,11 @@ using namespace std;
 // constantes du jeu
 const unsigned int SCORE_AU_DEBUT = 501,
                    FLECHETTES_MAX = 3;
-const char         LETTRE_D_MAJ = 'D',
-                   LETTRE_D_MIN = 'd',
-                   LETTRE_T_MAJ = 'T',
-                   LETTRE_T_MIN = 't',
-                   CONVERSION_MINUSCULE = 32;
+const char LETTRE_D_MAJ = 'D',
+           LETTRE_D_MIN = 'd',
+           LETTRE_T_MAJ = 'T',
+           LETTRE_T_MIN = 't',
+           CONVERSION_MINUSCULE = 32;
 
 int main()
 {
@@ -66,21 +66,19 @@ int main()
             reste_de_chaine += str[1];
             reste_de_chaine += str[2];
 
-            if (codeascii == LETTRE_T_MIN && !(reste_de_chaine == "25")) 
+            if (codeascii == LETTRE_T_MIN) 
             {
                coefficient = 3;
             } 
+            else if (codeascii == LETTRE_D_MIN) 
+            {
+               coefficient = 2;
+            } 
             else 
             {
-               if (codeascii == LETTRE_D_MIN) 
-               {
-                  coefficient = 2;
-               } 
-               else 
-               {
-                  str = "";
-               }
+               str = "";
             }
+
          }
       }
 
@@ -95,20 +93,20 @@ int main()
       int valeur_tir; // variable utilisée pour recevoir la valeur du tir
 
       //si l'entier valeur_tir a pu être lu depuis le flux ss
-      if (ss >> valeur_tir) 
-      {
+      if (ss >> valeur_tir) {
          unsigned int score_dun_coup = 0;
 
          // Traitement des valeurs simples uniquement
-         if ((valeur_tir >= 0 && valeur_tir <= 20) || (valeur_tir == 25) ||
+         if ((valeur_tir >= 0 && valeur_tir <= 20) || (valeur_tir == 25 && 
+             (coefficient == 1 || coefficient == 2)) ||
              (valeur_tir == 25 && coefficient == 2)) 
          {
             score_dun_coup = coefficient * valeur_tir;
             nombre_de_flechette_actuel++;
+            nombre_flechettes_total++;
          } 
          else 
          {
-            nombre_flechettes_total--;
             cout << "Entree non valide" << endl;
          }
 
@@ -135,7 +133,6 @@ int main()
          }
       }
       coefficient = 1; // on remet les coeff. à la valeur initiale après le traitement
-      nombre_flechettes_total++;
    } 
    while (score_actuel != 0);
 
