@@ -28,9 +28,10 @@
 *.out
 *.app
 
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
+labo03/nbproject/private/
+labo03/build/
+labo03/nbbuild/
+labo03/dist/
+labo03/nbproject/
+labo03/Makefile
+labo03/.nb-gradle/
